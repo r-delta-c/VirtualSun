@@ -5,7 +5,7 @@ Copyright (c) 2025, DeltaField
 
 ## Overview | 概要
 Name: VirtualSun<br>
-Version: 0.0.0-exp.1<br>
+Version: <br>
 
 シェーダー処理のみで太陽のような球体の星を表現するシェーダーです。
 <br>
