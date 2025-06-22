@@ -3,6 +3,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.0.1-exp.1] 2025/06/21
+- 正常にインポートができない環境への対処として、パッチバージョン上昇のみのアップデートを行いました。
+
+
 ## [0.0.0-exp.1] 2025/06/18
 ### Changed
 - ステレオレンダリング用の補正処理をDeltaField-Shader-CommonsにIncludeとして移行。
@@ -27,6 +31,8 @@ shader_featureの状態分岐が不足していた不具合を修正。
 
 dev-1.0 限定公開 2025/02/26
 ```
+
+[0.0.1-exp.1]: https://github.com/r-delta-c/VirtualSun/compare/0.0.0-exp.1...0.0.1-exp.1
 
 <!--
 ## [Unreleased]
