@@ -8,8 +8,8 @@ Shader "DeltaField/shaders/VirtualSun"{
         _ZWrite("Z Write",Float)=0.0
         [Space(16)]
         [MaterialToggle]_Forced_Z_Scale_Zero("Forced Z Scale Zero",Float)=1.0
-        [Toggle(_DISABLE_CUSTOM_BILLBOARD)]
-        _DisableCustomBillBoard("Particle Billboard Mode(Feature)",Float)=0.0
+        [Toggle(_BILLBOARD_MODE)]
+        _BillboardMode("Billboard Mode(Feature)",Float)=0.0
         [KeywordEnum(None,Position,Rotation,Position_Rotation)]
         _StereoMergeMode("Stereo Merge Mode(Feature)",Int)=2
         [Toggle(_PREVIEW_MODE)]
@@ -63,7 +63,7 @@ Shader "DeltaField/shaders/VirtualSun"{
 
             #pragma shader_feature_local _FLIPTEXCOORD_NONE _FLIPTEXCOORD_FLIP_X _FLIPTEXCOORD_FLIP_Y _FLIPTEXCOORD_FLIP_XY
             #pragma shader_feature_local _ _PREVIEW_MODE
-            #pragma shader_feature_local _ _DISABLE_CUSTOM_BILLBOARD
+            #pragma shader_feature_local _ _BILLBOARD_MODE
             #pragma shader_feature_local _ _USING_TEXTURE
 
             struct appdata{
@@ -134,12 +134,12 @@ Shader "DeltaField/shaders/VirtualSun"{
                 UNITY_INITIALIZE_OUTPUT(v2f,o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
-                #ifdef _DISABLE_CUSTOM_BILLBOARD
-                    o.alpha = v.color.a;
-                    #include "Packages/com.deltafield.shader_commons/Includes/vertex_non_billboard.hlsl"
-                #else
+                #ifdef _BILLBOARD_MODE
                     o.alpha = 1.0;
                     #include "Packages/com.deltafield.shader_commons/Includes/vertex_billboard.hlsl"
+                #else
+                    o.alpha = v.color.a;
+                    #include "Packages/com.deltafield.shader_commons/Includes/vertex_non_billboard.hlsl"
                 #endif
 
                 o.texcoord = (v.texcoord-0.5)*FLIP_TEX;
